@@ -64,16 +64,17 @@
        
       if(symbol == "SPACE" ){ 
       	array_play.push(this.pauseWords);						//	pause between words
+	position++;									//	ad 
         continue;
       }
       let cnt = symbol.split('').length
       console.log(  symbol.split('').length, symbol.split('') )
       for(k=0;k<cnt;k++){
       	(symbol[k] == '.')? array_play.push(this.dot) : array_play.push(this.line);	
-        array_play.push(this.pauseElement);                   // pause between element
+        array_play.push(this.pauseElement);                   				// pause between element
       } 
       //alert(symbol)
-      array_play.push(0);							            // push null vibration for wait
+      array_play.push(0);							        // push null vibration for wait
       array_play.push(this.dot * 2);							// Thats no right // pause between letter
       position++;
 	}
