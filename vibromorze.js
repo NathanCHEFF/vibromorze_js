@@ -82,5 +82,5 @@
   }
   
   window.vibromorze = vibromorze;
-  return vibromorze;
+  return vibromorze; 
 })();
