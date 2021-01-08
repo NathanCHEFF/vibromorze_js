@@ -1,6 +1,6 @@
 (function(){
     function vibromorze(){ 
-  	  this.symbols = {
+  	  this.symbols = { 
           'A': ".-",
           'B': "-...",
           'C': "-.-.",
