@@ -64,7 +64,7 @@
        
       if(symbol == "SPACE" ){ 
       	array_play.push(this.pauseWords);						//	pause between words
-	position++;									//	ad 
+	position++;									//	add increment
         continue;
       }
       let cnt = symbol.split('').length
