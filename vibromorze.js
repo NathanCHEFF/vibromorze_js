@@ -70,7 +70,7 @@
       console.log(  symbol.split('').length, symbol.split('') )
       for(k=0;k<cnt;k++){
       	(symbol[k] == '.')? array_play.push(this.dot) : array_play.push(this.line);	
-        arr1.push(this.pauseElement);                   // pause between element
+        array_play.push(this.pauseElement);                   // pause between element
       } 
       //alert(symbol)
       array_play.push(0);							            // push null vibration for wait
