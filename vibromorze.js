@@ -140,13 +140,16 @@
       let symbol = this.symbols[letter];
 
       if(symbol == "SPACE" ){
-      	array_play.push(this.pauseWords);						//	pause between words
-	position++;									//	add increment
+        array_play.push(this.pauseWords);						//	pause between words
+	      position++;									//	add increment
         continue;
       }
       let cnt = symbol.split('').length
       console.log(  symbol.split('').length, symbol.split('') )
       for(k=0;k<cnt;k++){
+        if(symbol[k] == undefined){
+          symbol[k] = this.translate(symbol[k])
+        }
       	(symbol[k] == '.')? array_play.push(this.dot) : array_play.push(this.line);
         array_play.push(this.pauseElement);                   				// pause between element
       }
