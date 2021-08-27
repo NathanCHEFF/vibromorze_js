@@ -121,8 +121,8 @@
         return this
   }
 
-  vibromorze.prototype.translate = function( string ){
-    return word.split('').map(function (char) {
+  vibromorze.prototype.translate = function( letter ){
+    return letter.split('').map(function (char) {
       return this.translater[char] || char;
     }).join("");
   }
@@ -139,6 +139,16 @@
       let letter =  string[position].toUpperCase();
       let symbol = this.symbols[letter];
 
+      if(symbol == undefined){
+        if(this.translate(symbol)){
+          symbol = this.translate(symbol)
+        } else {
+          alert("не поддерживается")
+        }
+      }
+
+
+
       if(symbol == "SPACE" ){
         array_play.push(this.pauseWords);						//	pause between words
 	      position++;									//	add increment
@@ -147,9 +157,6 @@
       let cnt = symbol.split('').length
       console.log(  symbol.split('').length, symbol.split('') )
       for(k=0;k<cnt;k++){
-        if(symbol[k] == undefined){
-          symbol[k] = this.translate(symbol[k])
-        }
       	(symbol[k] == '.')? array_play.push(this.dot) : array_play.push(this.line);
         array_play.push(this.pauseElement);                   				// pause between element
       }
