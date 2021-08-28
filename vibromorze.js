@@ -5,7 +5,7 @@
       {
         "Ё":"YO",
         "Й":"I",
-        "Ц":"TS",
+        "Ц":"",
         "У":"U",
         "К":"K",
         "Е":"E",
@@ -112,6 +112,8 @@
           ' ': "SPACE"
         };
 
+	this.cyrillicPattern = /[а-яА-ЯЁё]/;
+
         this.dot = 300;
         this.line = 3 * this.dot;
 
@@ -122,16 +124,29 @@
   }
 
   vibromorze.prototype.translate = function( letter ){
+  var dump = this.translater
     return letter.split('').map(function (char) {
-      return this.translater[char] || char;
+      //return this.translater[char] || char;
+	    console.log( vibromorze.translater)
+      return dump[char];
     }).join("");
+  }
+  vibromorze.prototype.ifCirilic = function(str){
+    return this.cyrillicPattern.test(str)
+  }
+
+  vibromorze.prototype.translateSymbol = function( letter ){
+    console.log("letter"+letter+"_symbol2"+symbol+"_sumb"+this.translater[letter])
+    return this.translater[letter]
   }
 
   vibromorze.prototype.play = function( string ){
 
+    if( this.ifCirilic(string) )string = this.translate(string)
+
     var i = string.split('').length;
 
-	  var position = 0;
+    var position = 0;
     var array_play = new Array();
 
     while(position < i){
@@ -139,15 +154,8 @@
       let letter =  string[position].toUpperCase();
       let symbol = this.symbols[letter];
 
-      if(symbol == undefined){
-        if(this.translate(symbol)){
-          symbol = this.translate(symbol)
-        } else {
-          alert("не поддерживается")
-        }
-      }
 
-
+      console.log("letter"+letter+"_symbol"+symbol)
 
       if(symbol == "SPACE" ){
         array_play.push(this.pauseWords);						//	pause between words
